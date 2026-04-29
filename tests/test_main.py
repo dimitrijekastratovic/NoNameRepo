@@ -20,11 +20,11 @@ def test_questions():
 def test_answers():
     response1 = client.post("/questions/0/answer", json={"answer": "Yes"})
     response1 = response1.json()
-    assert response1["correct"] == True
+    assert response1["correct"]
 
     response2 = client.post("/questions/1/answer", json={"answer": "Yes"})
     response2 = response2.json()
-    assert response2["correct"] == False
+    assert not response2["correct"]
 
     response3 = client.post("/questions/10/answer", json={"answer": "Yes"})
     assert response3.status_code == 404
