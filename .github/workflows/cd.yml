@@ -10,6 +10,8 @@ jobs:
     permissions:
         contents: read
         packages: write
+    env:
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/nonamerepo
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,6 +22,6 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and tag docker image
-        run: docker build -t ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}:${{ github.sha }} .
+        run: docker build -t ${{ env.IMAGE_NAME }}:${{ github.sha }} .
       - name: Push docker image to GHCR
-        run: docker push ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}:${{ github.sha }}
+        run: docker push ${{ env.IMAGE_NAME }}:${{ github.sha }}
