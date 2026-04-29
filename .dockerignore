@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Git
+.git/
+.gitignore
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker / Deployment
+Dockerfile
+docker-compose.yml
+README.md
+
+# Testing & Coverage
+.pytest_cache/
+tests/__pycache__/
+htmlcov/
+.tox/
+tests/
+
+# Local databases
+*.sqlite3
