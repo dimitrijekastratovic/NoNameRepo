@@ -1,13 +1,21 @@
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 CONTENT_DIR = Path(__file__).parent.parent / "content"
 
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.get("/")
+def root():
+    return FileResponse("app/static/index.html")
 
 @app.get("/topics")
 def get_topics():
