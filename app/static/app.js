@@ -21,6 +21,10 @@ function initTheme() {
     });
 }
 
+function slugToTitle(name) {
+    return name.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase());
+}
+
 function fetchTopics() {
     fetch("/topics")
         .then(response => response.json())
@@ -31,15 +35,20 @@ function fetchTopics() {
                 topicGroup.className = "topic-group";
                 const topicHeading = document.createElement("div");
                 topicHeading.className = "topic-heading";
-                topicHeading.textContent = topic.topic;
+                topicHeading.textContent = slugToTitle(topic.topic);
                 topicGroup.appendChild(topicHeading);
 
                 topic.articles.forEach(article => {
                     const articleLink = document.createElement("a");
                     articleLink.className = "article-link";
                     articleLink.href = "#";
-                    articleLink.textContent = article.replace(/-/g, " ");
+                    articleLink.textContent = slugToTitle(article);
                     articleLink.addEventListener("click", (e) => {
+                        const activeLink = document.querySelector(".article-link.active");
+                        if (activeLink) {
+                            activeLink.classList.remove("active");
+                        }
+                        articleLink.classList.add("active");
                         fetchArticle(topic.topic, article);
                     });
                     topicGroup.appendChild(articleLink);
