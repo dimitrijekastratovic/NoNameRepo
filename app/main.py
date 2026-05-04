@@ -9,6 +9,22 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 CONTENT_DIR = Path(__file__).parent.parent / "content"
 
+TOPIC_ORDER = ["data-structures", "algorithms", "system-design"]
+
+ARTICLE_ORDER = {
+    "data-structures": [
+        "arrays", "stacks", "queues", "linked-lists", "hash-maps",
+        "trees", "heaps", "graphs", "tries",
+    ],
+    "algorithms": [
+        "binary-search", "two-pointers", "sliding-window", "recursion",
+        "divide-and-conquer", "sorting-algorithms", "breadth-first-search",
+        "depth-first-search", "backtracking", "greedy-algorithms",
+        "monotonic-stack", "union-find", "dijkstra", "dynamic-programming",
+    ],
+    "system-design": ["scalability"],
+}
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -20,16 +36,12 @@ def root():
 @app.get("/topics")
 def get_topics():
     topics = []
-    for topic_dir in CONTENT_DIR.iterdir():
-        topic = ""
-        articles = []
-        if topic_dir.is_dir():
-            topic = topic_dir.name
-        else:
+    for topic in TOPIC_ORDER:
+        topic_dir = CONTENT_DIR / topic
+        if not topic_dir.is_dir():
             continue
-        for article in topic_dir.iterdir():
-            if article.is_file() and article.suffix == ".md":
-                articles.append(article.stem)
+        existing = {f.stem for f in topic_dir.iterdir() if f.is_file() and f.suffix == ".md"}
+        articles = [a for a in ARTICLE_ORDER.get(topic, []) if a in existing]
         topics.append({"topic": topic, "articles": articles})
     return {"topics": topics}
 
