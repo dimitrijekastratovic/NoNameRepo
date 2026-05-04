@@ -72,7 +72,7 @@ body {
   letter-spacing: -0.01em;
 }
 
-#theme-toggle {
+.theme-toggle {
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -83,7 +83,7 @@ body {
   transition: border-color 0.2s;
 }
 
-#theme-toggle:hover {
+.theme-toggle:hover {
   border-color: var(--accent);
 }
 
@@ -215,6 +215,7 @@ body {
 }
 
 .copy-btn {
+  color: var(--text-secondary);
   position: absolute;
   top: 10px;
   right: 10px;
@@ -253,4 +254,138 @@ body {
 
 #article-body strong {
   font-weight: 600;
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
+/* ── Landing page ───────────────────────────────────────────────────────── */
+#landing {
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#landing-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  background-color: var(--bg-topbar);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+#landing-app-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+#hero {
+  margin-top: var(--topbar-height);
+  padding: 100px 24px 64px;
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+}
+
+#hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+#hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#start-btn {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#start-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+#topic-cards {
+  display: flex;
+  gap: 20px;
+  padding: 0 24px 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.topic-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  flex: 1;
+  min-width: 220px;
+  max-width: 260px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.topic-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.topic-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.topic-card-count {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ── Study view back button ─────────────────────────────────────────────── */
+#back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+#back-btn:hover {
+  border-color: var(--accent);
 }
