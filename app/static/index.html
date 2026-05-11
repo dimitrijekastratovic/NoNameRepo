@@ -11,20 +11,40 @@
   </head>
   <body>
     <div id="app">
-      <header id="topbar">
-        <span id="app-name">Interview Prep</span>
-        <button id="theme-toggle">🌙</button>
-      </header>
-      <div id="main-layout">
-        <nav id="sidebar">
-          <div id="topic-list"></div>
-        </nav>
-        <main id="content">
-          <div id="article-body">
-            <p id="placeholder">Select a topic from the sidebar to start reading.</p>
-          </div>
-        </main>
+
+      <!-- Landing page -->
+      <div id="landing">
+        <header id="landing-topbar">
+          <span id="landing-app-name">Interview Prep</span>
+          <button id="theme-toggle" class="theme-toggle">🌙</button>
+        </header>
+        <section id="hero">
+          <h1 id="hero-title">Ace your next<br/>technical interview.</h1>
+          <p id="hero-subtitle">Structured study guides for Data Structures, Algorithms, and System Design — built for big tech interviews.</p>
+          <button id="start-btn">Start Learning</button>
+        </section>
+        <section id="topic-cards"></section>
       </div>
+
+      <!-- Study UI -->
+      <div id="study" class="hidden">
+        <header id="topbar">
+          <button id="back-btn">← Back</button>
+          <span id="app-name">Interview Prep</span>
+          <button id="theme-toggle-study" class="theme-toggle">🌙</button>
+        </header>
+        <div id="main-layout">
+          <nav id="sidebar">
+            <div id="topic-list"></div>
+          </nav>
+          <main id="content">
+            <div id="article-body">
+              <p id="placeholder">Select a topic from the sidebar to start reading.</p>
+            </div>
+          </main>
+        </div>
+      </div>
+
     </div>
     <script src="/static/app.js"></script>
   </body>
