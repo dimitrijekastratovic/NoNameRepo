@@ -22,7 +22,7 @@ tomli==2.4.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 uvicorn==0.46.0
-passlib[bcrypt]==1.7.4
 psycopg2-binary==2.9.9
 sqlmodel==0.0.21
 python-jose[cryptography]==3.3.0
+bcrypt==5.0.0

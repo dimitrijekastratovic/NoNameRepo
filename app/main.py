@@ -1,13 +1,24 @@
 from fastapi import FastAPI
-from .routers.content import router
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
+from .routers.content import router as content
+from .routers.auth import router as auth
 
-app = FastAPI()
-app.include_router(router)
+from sqlmodel import SQLModel
+from .database import engine
+from .models.user import User  # noqa: F401
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    SQLModel.metadata.create_all(engine)
+    yield
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(content)
+app.include_router(auth, prefix="/auth")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
-
 
 @app.get("/health")
 def health():
