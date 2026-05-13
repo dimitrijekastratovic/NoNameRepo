@@ -1,6 +1,7 @@
+import os
 from sqlmodel import create_engine, Session
 
-DATABASE_URL = "postgresql://postgres:postgres@db:5432/app"
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@db:5432/app")
 engine = create_engine(DATABASE_URL, echo=True)
 
 def get_session():
