@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login — Interview Prep</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header id="landing-topbar">
+      <a href="/" id="landing-app-name" style="text-decoration:none">Interview Prep</a>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </header>
+
+    <div id="auth-page">
+      <div id="auth-card">
+        <h1 id="auth-title">Welcome back</h1>
+        <p id="auth-subtitle">Log in to continue studying.</p>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required />
+          </div>
+          <p id="auth-error" class="auth-error hidden"></p>
+          <button type="submit" class="auth-btn">Log in</button>
+        </form>
+
+        <p id="auth-switch">Don't have an account? <a href="/register">Sign up</a></p>
+      </div>
+    </div>
+
+    <script src="/static/auth.js"></script>
+  </body>
+</html>
