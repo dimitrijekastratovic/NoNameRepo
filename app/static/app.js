@@ -100,7 +100,7 @@ function buildTopicCards(topics) {
 
         card.appendChild(title);
         card.appendChild(count);
-        card.addEventListener("click", () => showStudy());
+        card.addEventListener("click", navigateToStudy);
         container.appendChild(card);
     });
 }
@@ -134,9 +134,19 @@ function addCopyButtons() {
     });
 }
 
+function navigateToStudy() {
+    fetch("/auth/me").then(response => {
+        if (response.ok) {
+            showStudy();
+        } else {
+            window.location.href = "/login";
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     fetchTopics();
-    document.getElementById("start-btn").addEventListener("click", showStudy);
+    document.getElementById("start-btn").addEventListener("click", navigateToStudy);
     document.getElementById("back-btn").addEventListener("click", showLanding);
 });

@@ -3,9 +3,13 @@ from sqlmodel import Session, select
 from app.database import get_session
 from app.models.user import User
 from app.schemas.user import UserCreate, UserRead, UserLogin
-from app.auth.utils import hash_password, verify_password, create_access_token
+from app.auth.utils import hash_password, verify_password, create_access_token, get_current_user
 
 router = APIRouter()
+
+@router.get("/me", response_model=UserRead)
+def authenticate_current_user(current_user: User = Depends(get_current_user)):
+    return current_user
 
 @router.post("/login")
 def login(user: UserLogin, response: Response, session: Session = Depends(get_session)):

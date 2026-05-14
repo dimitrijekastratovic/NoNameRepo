@@ -27,3 +27,11 @@ def health():
 @app.get("/")
 def root():
     return FileResponse("app/static/index.html")
+
+@app.get("/login")
+def login():
+    return FileResponse("app/static/login.html")
+
+@app.get("/register")
+def register():
+    return FileResponse("app/static/register.html")

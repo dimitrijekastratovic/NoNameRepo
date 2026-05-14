@@ -1,7 +1,12 @@
 import os
 import bcrypt
+from fastapi import HTTPException, Request, Depends
 from jose import jwt
 from datetime import datetime, timezone, timedelta
+
+from sqlmodel import Session, select
+from app.database import get_session
+from app.models.user import User
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
@@ -26,3 +31,19 @@ def verify_access_token(token: str):
         return payload
     except jwt.JWTError:
         return None
+
+def get_current_user(request: Request, session: Session = Depends(get_session)):
+    token = request.cookies.get("token")
+    if token is None:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    payload = verify_access_token(token)
+    if payload is None:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
+    user_id = payload.get("sub")
+    user = session.exec(select(User).where(User.id == user_id)).first()
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+    
+    return user
