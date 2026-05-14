@@ -49,6 +49,14 @@ function register() {
     const lastName = document.getElementById("last_name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm_password").value;
+
+    if (password !== confirmPassword) {
+        const error = document.getElementById("auth-error");
+        error.textContent = "Passwords do not match.";
+        error.classList.remove("hidden");
+        return;
+    }
 
     const user = { first_name: firstName, last_name: lastName, email, password };
 
@@ -73,7 +81,14 @@ function register() {
 
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
-    
+
+    document.querySelectorAll(".toggle-password").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const input = document.getElementById(btn.dataset.target);
+            input.type = input.type === "password" ? "text" : "password";
+        });
+    });
+
     const loginForm = document.getElementById("login-form");
     if (loginForm) loginForm.addEventListener("submit", (e) => { e.preventDefault(); login(); });
 

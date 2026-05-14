@@ -447,6 +447,33 @@ body {
   border-color: var(--accent);
 }
 
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover {
+  color: var(--text-primary);
+}
+
 .auth-btn {
   width: 100%;
   background-color: var(--accent);
@@ -489,7 +516,7 @@ body {
 }
 
 /* ── Study view back button ─────────────────────────────────────────────── */
-#back-btn {
+#back-btn, #logout-btn {
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -500,6 +527,6 @@ body {
   transition: border-color 0.2s;
 }
 
-#back-btn:hover {
+#back-btn:hover, #logout-btn:hover {
   border-color: var(--accent);
 }
