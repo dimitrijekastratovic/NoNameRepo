@@ -144,9 +144,22 @@ function navigateToStudy() {
     });
 }
 
+function logout() {
+    fetch("/auth/logout", { method: "POST" })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = "/login";
+            } else {
+                console.error("Logout failed");
+            }
+        })
+        .catch(error => console.error("Error during logout:", error));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     fetchTopics();
     document.getElementById("start-btn").addEventListener("click", navigateToStudy);
     document.getElementById("back-btn").addEventListener("click", showLanding);
+    document.getElementById("logout-btn").addEventListener("click", logout);
 });
