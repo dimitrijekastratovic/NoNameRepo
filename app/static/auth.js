@@ -56,6 +56,10 @@ function register() {
     .catch(error => console.error("Error during registration:", error));
 }
 
+function hideAuthError() {
+    document.getElementById("auth-error").classList.add("hidden");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".toggle-password").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -69,4 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const registerForm = document.getElementById("register-form");
     if (registerForm) registerForm.addEventListener("submit", (e) => { e.preventDefault(); register(); });
+
+    document.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", hideAuthError);
+    });
 });
