@@ -256,11 +256,6 @@ body {
   font-weight: 600;
 }
 
-/* ── Utility ────────────────────────────────────────────────────────────── */
-.hidden {
-  display: none !important;
-}
-
 /* ── Landing page ───────────────────────────────────────────────────────── */
 #landing {
   min-height: 100vh;
@@ -268,28 +263,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#landing-topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--topbar-height);
-  background-color: var(--bg-topbar);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  z-index: 100;
-}
-
-#landing-app-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
 }
 
 #hero {
@@ -372,6 +345,11 @@ body {
 .topic-card-count {
   font-size: 0.875rem;
   color: var(--text-secondary);
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────── */
+.hidden {
+  display: none !important;
 }
 
 /* ── Auth pages ─────────────────────────────────────────────────────────── */
@@ -515,8 +493,8 @@ body {
   text-decoration: underline;
 }
 
-/* ── Study view back button ─────────────────────────────────────────────── */
-#back-btn, #logout-btn {
+/* ── Loguout button ─────────────────────────────────────────────── */
+#logout-btn {
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -527,6 +505,6 @@ body {
   transition: border-color 0.2s;
 }
 
-#back-btn:hover, #logout-btn:hover {
+#logout-btn:hover {
   border-color: var(--accent);
 }

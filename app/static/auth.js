@@ -1,26 +1,3 @@
-function isDark() {
-    return document.body.classList.contains("dark");
-}
-
-function applyTheme(dark) {
-    if (dark) {
-        document.body.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-        document.querySelectorAll(".theme-toggle").forEach(btn => btn.innerHTML = "☀️");
-    } else {
-        document.body.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-        document.querySelectorAll(".theme-toggle").forEach(btn => btn.innerHTML = "🌙");
-    }
-}
-
-function initTheme() {
-    applyTheme(localStorage.getItem("theme") === "dark");
-    document.querySelectorAll(".theme-toggle").forEach(btn => {
-        btn.addEventListener("click", () => applyTheme(!isDark()));
-    });
-}
-
 function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -80,8 +57,6 @@ function register() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    initTheme();
-
     document.querySelectorAll(".toggle-password").forEach(btn => {
         btn.addEventListener("click", () => {
             const input = document.getElementById(btn.dataset.target);
