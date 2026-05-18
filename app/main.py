@@ -8,6 +8,10 @@ from .routers.auth import router as auth
 from sqlmodel import SQLModel
 from .database import engine
 from .models.user import User  # noqa: F401
+from .models.problem import Problem  # noqa: F401
+from .models.test_case import TestCase  # noqa: F401
+from .models.topic import Topic  # noqa: F401
+from .models.problem_topics import ProblemTopic  # noqa: F401
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
